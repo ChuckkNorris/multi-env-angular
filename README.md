@@ -1,27 +1,13 @@
 # MultiEnvApp
+Example Angular app configured to use application configuration generated when app is deployed to Kubernetes.
+Locally, app uses the `/src/assets/config/app.config.json` file.
+In Kubernetes, variables would be used for the config values in the manifest and replaced during execution of the release pipeline
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
+# Prerequisites
+1. Docker for Desktop installed
+2. Kubernetes enabled via Docker Desktop settings
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+# Running the App
+1. Deploy to your Kubernetes cluster
+  `kubectl apply -f manifest.yml`
+3. Navigate to `localhost:31317` to view the app
