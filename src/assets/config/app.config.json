@@ -1,5 +1,5 @@
 {
-  "keycloakUrl": "sso-tst.jbhunt.com",
-  "serviceA": "offersmanagement-tst.jbhunt.com",
-  "serviceB": "operations-tst.jbhunt.com"
+  "keycloakUrl": "sso-tst.google.com",
+  "serviceA": "service-a-test.google.com",
+  "serviceB": "service-b-test.google.com"
 }

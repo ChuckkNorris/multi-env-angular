@@ -12,8 +12,8 @@ data:
   app-config.json: |-
     {
       "environment": "Production",
-      "dotNetURL": "https://my-apps.nonprod.jbhunt.com",
-      "dotNetProdURL": "https://my-apps.jbhunt.com"
+      "serviceA": "https://my-apps.google.com/service-a",
+      "serviceB": "https://my-apps.google.com/service-b"
     }
 ---
 apiVersion: extensions/v1beta1
