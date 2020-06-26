@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-apps
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: envread-settings
+  namespace: my-apps
+data:
+  app-config.json: |-
+    {
+      "environment": "Production",
+      "dotNetURL": "https://my-apps.nonprod.jbhunt.com",
+      "dotNetProdURL": "https://my-apps.jbhunt.com"
+    }
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: multi-env-app
+  namespace: my-apps
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: multi-env-app
+    spec:
+      containers:
+      - name: multi-env-app
+        image: docker.io/chuckknorris/multi-env-app:2
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: "400m"
+            memory: "500Mi"
+          requests:
+            cpu: "200m"
+            memory: "250Mi"
+        volumeMounts:
+          - name: envread-volume
+            mountPath: /usr/share/nginx/html/assets/config/
+      volumes:
+      - name: envread-volume
+        configMap:
+          name: envread-settings
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: multi-env-app
+  namespace: my-apps
+  labels:
+    app: multi-env-app
+spec:
+  type: NodePort
+  ports:
+  - nodePort: 31317
+    port: 80
+    protocol: TCP
+    targetPort: 80
+    name: web
+  selector:
+    app: multi-env-app

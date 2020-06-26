@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "multi-env-app"
+    }
+  },
+  "defaultProject": "multi-env-app",
+  "cli": {
+    "analytics": false
+  }
 }
