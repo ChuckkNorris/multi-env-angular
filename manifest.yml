@@ -13,16 +13,20 @@ data:
     {
       "environment": "Production",
       "serviceA": "https://my-apps.google.com/service-a",
-      "serviceB": "https://my-apps.google.com/service-b"
+      "serviceB": "https://my-apps.google.com/service-b",
+      "serviceC": "https://my-apps.google.com/service-c/context-path"
     }
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: multi-env-app
   namespace: my-apps
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: multi-env-app
   template:
     metadata:
       labels:
