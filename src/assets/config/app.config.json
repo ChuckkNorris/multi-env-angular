@@ -1,5 +1,6 @@
 {
-  "keycloakUrl": "sso-tst.google.com",
+  "environment": "development",
+  "keycloakUrl": "sso-dev.google.com",
   "serviceA": "service-a-test.google.com",
   "serviceB": "service-b-test.google.com"
 }

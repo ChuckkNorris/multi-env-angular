@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,13 @@ export class AppConfigService {
   constructor(private http: HttpClient) { }
 
   public loadConfig() {
-    return this.http.get('/assets/config/app-config.json')
+    var headers = new HttpHeaders({
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache',
+      'Expires': 'Sat, 01 Jan 2000 00:00:00 GMT'
+    });
+    return this.http
+      .get('/assets/config/app.config.json', { headers })
       .toPromise()
       .then((config: any) => {
         console.log('Loaded application configuration', config);

@@ -10,14 +10,7 @@ metadata:
   namespace: my-apps
 data:
   app.config.json: |-
-    {
-      "environment": "Production",
-      "serviceA": "https://my-apps.google.com/service-a",
-      "serviceB": "https://my-apps.google.com/service-b",
-      "serviceC": "https://my-apps.google.com/service-c",
-      "keyCloakUrl": "sso-dev.keycloak.com",
-      "neato": "https://my-apps.neato.com/awesome123"
-    }
+    MY_ENV_OBJ_HERE
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -36,7 +29,7 @@ spec:
     spec:
       containers:
       - name: multi-env-app
-        image: docker.io/chuckknorris/multi-env-app:3
+        image: docker.io/chuckknorris/multi-env-app:4
         imagePullPolicy: Always
         resources:
           limits:
