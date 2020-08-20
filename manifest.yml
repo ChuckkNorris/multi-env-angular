@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: my-apps
+  name: my-apps-neat
 ---
 kind: ConfigMap
 apiVersion: v1
